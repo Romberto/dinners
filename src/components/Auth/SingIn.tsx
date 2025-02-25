@@ -1,9 +1,10 @@
 import React, { ChangeEvent, FormEvent, useState } from "react";
 import styled from "./Auth.module.css";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../firebase";
-import { useAppDispatch } from "../../app/hook";
+import { useAppDispatch, useAppSelector } from "../../app/hook";
 import { singInAction } from "../../app/authSlice.slice";
+import { ERROR_FORM_TEXT } from "../../utils/appConstans";
+import { isEmaiValid } from "../../utils/utils";
+import { authFormErrorSelector } from "../../utils/selectors";
 
 type AuthFormData = {
   email: string;
@@ -18,7 +19,10 @@ const initialState: AuthFormData = {
 
 export const SingIn: React.FC = () => {
   const [formData, setFormData] = useState<AuthFormData>(initialState);
-  const [formErrors, setFormErrors] = useState(initialState);
+  const [formErrors, setFormErrors] = useState({
+    email: false
+  });
+  const authFormError = useAppSelector(authFormErrorSelector);
   const dispatch = useAppDispatch();
   const handleChangeInput = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -28,9 +32,7 @@ export const SingIn: React.FC = () => {
     }));
     setFormErrors((prevState) => ({
       ...prevState,
-      email: "",
-      password: "",
-      password2: "",
+      email: false
     }));
     // валидация value
   };
@@ -38,9 +40,19 @@ export const SingIn: React.FC = () => {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    const isEmailValid = isEmaiValid(formData.email)
+    if(!isEmaiValid){
+      setFormErrors((prev) => ({
+        email: true
+      }))
+    }
+
     // проверка на валиднось
-    const isFormValid = Object.values(formErrors).every(
-      (error) => error === ""
+    const isFormValid = Object.values({
+      ...formErrors,
+      email: !isEmailValid
+    }).every(
+      (error) => error === false
     );
     if (isFormValid) {
       const { email, password } = formData;
@@ -53,17 +65,17 @@ export const SingIn: React.FC = () => {
       }));
       setFormErrors((prev) => ({
         ...prev,
-        email: "",
-        password: "",
-        password2: "",
+        email: false
       }));
+      
     }
     return;
   };
   return (
     <form onSubmit={handleSubmit}>
       <h3>SingIn</h3>
-      <input
+      <label>
+        <input
         type="text"
         name="email"
         value={formData.email}
@@ -71,7 +83,8 @@ export const SingIn: React.FC = () => {
         className={styled.input}
         onChange={handleChangeInput}
       />
-
+      {formErrors.email && <p>{ERROR_FORM_TEXT.EMAIL_ERROR}</p>}
+      </label>
       <label>
         <input
           type="password"
@@ -81,10 +94,10 @@ export const SingIn: React.FC = () => {
           className={styled.input}
           onChange={handleChangeInput}
         />
-        {formErrors.password2 && <p>passwords don't match</p>}
       </label>
 
       <button type="submit">SingUp</button>
+      {authFormError && <p>{ERROR_FORM_TEXT.NO_TACCOUNT}</p>}
     </form>
   );
 };

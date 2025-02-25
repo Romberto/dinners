@@ -43,6 +43,7 @@ export const SingIn: React.FC = () => {
     const isEmailValid = isEmaiValid(formData.email)
     if(!isEmaiValid){
       setFormErrors((prev) => ({
+        ...prev,
         email: true
       }))
     }

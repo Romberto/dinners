@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "./app/hook";
 import { setUser } from "./app/authSlice.slice";
 import { SingOut } from "./components/Auth/SingOut";
+import { Header } from "./components/Header/Header/Header";
 
 function App() {
   const dispatch = useAppDispatch()
@@ -21,12 +22,11 @@ useEffect(()=>{
 }, [])
 const user = useAppSelector((state)=> state.redusers.authReducer.user)
   return (
-    <>
+    <div className="container">
     {user ? <p>{user}</p>: <p>Authentication</p>}
+      <Header/>
       <SingUp />
-      <SingIn />
-      <SingOut/>
-    </>
+    </div>
   );
 }
 

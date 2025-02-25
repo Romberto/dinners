@@ -3,6 +3,8 @@ import styled from "./Auth.module.css";
 import { useAppDispatch, useAppSelector } from "../../app/hook";
 import { addUserAction } from "../../app/authSlice.slice";
 import { formettedErrorText, isEmaiValid } from "../../utils/utils";
+import { authFormErrorSelector } from "../../utils/selectors";
+import { ERROR_FORM_TEXT } from "../../utils/appConstans";
 
 type AuthFormData = {
   email: string;
@@ -28,9 +30,7 @@ export const SingUp: React.FC = () => {
     isPasswordTooShort: false,
   });
   const dispatch = useAppDispatch();
-  const AuthFormError = useAppSelector(
-    (state) => state.redusers.authReducer.authError
-  );
+  const authFormError = useAppSelector(authFormErrorSelector);
 
   const handleChangeInput = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -102,7 +102,7 @@ export const SingUp: React.FC = () => {
           className={styled.input}
           onChange={handleChangeInput}
         />
-        {formErrors.isEmailInvalid && <p>Please enter a valid email address</p>}
+        {formErrors.isEmailInvalid && <p>{ERROR_FORM_TEXT.EMAIL_ERROR}</p>}
       </label>
 
       <input
@@ -122,14 +122,14 @@ export const SingUp: React.FC = () => {
           className={styled.input}
           onChange={handleChangeInput}
         />
-        {formErrors.isPassMatch && <p>passwords don't match</p>}
+        {formErrors.isPassMatch && <p>{ERROR_FORM_TEXT.PASS_NOT_MATCH}</p>}
         {formErrors.isPasswordTooShort && (
-          <p>the password is less than 6 characters long</p>
+          <p>{ERROR_FORM_TEXT.PASS_LENGTH_LESS}</p>
         )}
       </label>
 
       <button type="submit">SingUp</button>
-      {AuthFormError && <p>{formettedErrorText(AuthFormError)}</p>}
+      {authFormError && <p>{formettedErrorText(authFormError)}</p>}
     </form>
   );
 };

@@ -52,7 +52,6 @@ export const SingUp: React.FC = () => {
     const passwordsMatch = formData.password === formData.password2;
     const passwordTooShort = formData.password.length >= 5;
     const emailValidet = isEmaiValid(formData.email);
-    console.log(emailValidet)
     // Проверка на валидность
     if (!passwordsMatch) {
       setFormErrors((prev) => ({ ...prev, isPassMatch: true }));

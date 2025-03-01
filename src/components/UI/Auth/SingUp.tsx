@@ -1,10 +1,10 @@
 import React, { ChangeEvent, FormEvent, useState } from "react";
 import styled from "./Auth.module.css";
-import { useAppDispatch, useAppSelector } from "../../app/hook";
-import { addUserAction } from "../../app/authSlice.slice";
-import { formettedErrorText, isEmaiValid } from "../../utils/utils";
-import { authFormErrorSelector } from "../../utils/selectors";
-import { ERROR_FORM_TEXT } from "../../utils/appConstans";
+import { useAppDispatch, useAppSelector } from "../../../app/hook";
+import { addUserAction } from "../../../app/authSlice.slice";
+import { formettedErrorText, isEmaiValid } from "../../../utils/utils";
+import { authFormErrorSelector } from "../../../utils/selectors";
+import { ERROR_FORM_TEXT } from "../../../utils/appConstans";
 
 type AuthFormData = {
   email: string;

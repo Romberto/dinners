@@ -1,6 +1,6 @@
 import React from 'react';
-import { useAppDispatch } from '../../app/hook';
-import { LogOutAction } from '../../app/authSlice.slice';
+import { useAppDispatch } from '../../../app/hook';
+import { LogOutAction } from '../../../app/authSlice.slice';
 
 export const SingOut: React.FC = () => {
     const dispatch = useAppDispatch()

@@ -23,9 +23,10 @@ function App() {
   const user = useAppSelector((state) => state.redusers.authReducer.user);
   return (
     <div className="container layout">
-      {user ? <p>{user}</p> : <p>No Authentication</p>}
+     
       <Header/>
       <main className="main">
+        {<p>{user}</p>}
         <Routes>
           <Route path="/" element={<Home />}></Route>
         </Routes>

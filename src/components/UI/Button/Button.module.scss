@@ -12,4 +12,15 @@
     font-weight: 500;
     font-size: 1.5rem;
     width: 100%;
+    cursor:pointer;
+    box-shadow: 0 0 0 0 var(--orange);
+    transition: background-color ease 0.2s, box-shadow ease 0.2s;
+    &:hover{
+        box-shadow: 1px 1px 5px 3px var(--orange-ligth);
+    }
+    &:active{
+        box-shadow: 1px 1px 5px 3px var(--orange-ligth);
+        background-color: var(--orange-ligth);
+    }
 }
+

@@ -3,15 +3,20 @@
 *,
 *::before,
 *::after {
+  color: var(--text-color);
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 :root{
-  --orange: #E56B1A;
+  --orange: #eb6c18;
+  --orange-ligth: #dd6e24;
   --white: #fff;
+  --black: #000;
+  --text-color: #877363;
 }
 html {
+ 
   --refRes: 300;
   font-size: calc(100vw / var(--refRes) * 12);
   @media(min-width: 440px){

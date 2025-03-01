@@ -1,12 +1,10 @@
 import React  from 'react';
 import styled from './Button.module.scss'
+import { UiButtonType } from '../../../utils/types';
 
-type ButtonT = React.ButtonHTMLAttributes<HTMLButtonElement>  & {
-    children?: React.ReactNode;
-    className?: string; // Позволяет добавлять className
-};
 
-export const Button: React.FC<ButtonT> = ({ children, className, ...rest }) => {
+
+export const Button: React.FC<UiButtonType> = ({ children, className='', ...rest }) => {
     return (
         <button className={`${styled.btn} ${className}`} {...rest}>
             {children}

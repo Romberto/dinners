@@ -23,9 +23,7 @@ const user = useAppSelector((state)=> state.redusers.authReducer.user)
   return (
     <>
     {user ? <p>{user}</p>: <p>Authentication</p>}
-      <SingUp />
-      <SingIn />
-      <SingOut/>
+
     </>
   );
 }

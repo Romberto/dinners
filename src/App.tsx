@@ -10,6 +10,7 @@ import home from './assets/img/home.svg'
 import orders from './assets/img/orders.svg'
 import account from './assets/img/account.svg'
 import { Button } from "./components/UI/Button/Button";
+
 function App() {
   const dispatch = useAppDispatch()
 useEffect(()=>{
@@ -32,8 +33,6 @@ const user = useAppSelector((state)=> state.redusers.authReducer.user)
       <ButtonIcon icon={orders} text={"orders"}/>
       <Button>Click</Button>
     </>
-
-    
   );
 }
 

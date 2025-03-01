@@ -5,6 +5,8 @@ import { useAppDispatch, useAppSelector } from "./app/hook";
 import { setUser } from "./app/authSlice.slice";
 import { Route, Routes } from "react-router-dom";
 import { Home } from "./components/pages/Home/Home";
+import { Header } from "./components/UI/Header/Header";
+import { Footer } from "./components/UI/Footer/Footer";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -22,13 +24,13 @@ function App() {
   return (
     <div className="container layout">
       {user ? <p>{user}</p> : <p>No Authentication</p>}
-      <header className="header"></header>
+      <Header/>
       <main className="main">
         <Routes>
           <Route path="/" element={<Home />}></Route>
         </Routes>
       </main>
-      <footer className="footer"></footer>
+      <Footer/>
     </div>
   );
 }

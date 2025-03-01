@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,100..900;1,100..900&display=swap');
+
+*,
+*::before,
+*::after {
+  color: var(--text-color);
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+:root{
+  --orange: #eb6c18;
+  --orange-ligth: #dd6e24;
+  --white: #fff;
+  --black: #000;
+  --text-color: #877363;
+}
+html {
+ 
+  --refRes: 300;
+  font-size: calc(100vw / var(--refRes) * 12);
+  @media(min-width: 440px){
+    --refRes: 340
+  }
+  @media(min-width: 530px){
+    --refRes: 430;
+  }
+  @media(min-width: 768px){
+    --refRes: 670;
+  }
+    @media(min-width: 1024px){
+    --refRes: 924;
+  }
+  @media(min-width: 1140px){
+    --refRes: 1140;
+  }
+}
+
+
+.container{
+    min-width: 320px;
+    max-width: 100%;
+    padding: 0 0.5rem;
+}

@@ -1,0 +1,26 @@
+.btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.7rem 0.9rem;
+    border-radius: 25px;
+    border: none;
+    background-color: var(--orange);
+    color: var(--white);
+    line-height: 1.7rem;
+    font-family: "Epilogue", serif;
+    font-weight: 500;
+    font-size: 1.5rem;
+    width: 100%;
+    cursor:pointer;
+    box-shadow: 0 0 0 0 var(--orange);
+    transition: background-color ease 0.2s, box-shadow ease 0.2s;
+    &:hover{
+        box-shadow: 1px 1px 5px 3px var(--orange-ligth);
+    }
+    &:active{
+        box-shadow: 1px 1px 5px 3px var(--orange-ligth);
+        background-color: var(--orange-ligth);
+    }
+}
+

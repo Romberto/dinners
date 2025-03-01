@@ -3,7 +3,6 @@ import { auth } from "./firebase";
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "./app/hook";
 import { setUser } from "./app/authSlice.slice";
-import './App.scss';
 import { ButtonIcon } from "./components/UI/ButtonIcon/ButtonIcon";
 import setting from './assets/img/setting.svg'
 import home from './assets/img/home.svg'

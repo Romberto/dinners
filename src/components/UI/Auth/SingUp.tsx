@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from "../../../app/hook";
 import { addUserAction } from "../../../app/authSlice.slice";
 import { formettedErrorText, isEmaiValid } from "../../../utils/utils";
 import { authFormErrorSelector } from "../../../utils/selectors";
-import { ERROR_FORM_TEXT } from "../../../utils/appConstans";
+import { ERROR_FORM_TEXT } from "../../../utils/constants";
 
 type AuthFormData = {
   email: string;

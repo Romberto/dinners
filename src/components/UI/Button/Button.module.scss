@@ -1,0 +1,15 @@
+.btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.7rem 0.9rem;
+    border-radius: 25px;
+    border: none;
+    background-color: var(--orange);
+    color: var(--white);
+    line-height: 1.7rem;
+    font-family: "Epilogue", serif;
+    font-weight: 500;
+    font-size: 1.5rem;
+    width: 100%;
+}

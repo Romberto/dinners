@@ -1,12 +1,10 @@
 import { onAuthStateChanged } from "firebase/auth";
-import { SingUp } from "./components/Auth/SingUp";
-import { SingIn } from "./components/Auth/SingIn";
 import { auth } from "./firebase";
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "./app/hook";
 import { setUser } from "./app/authSlice.slice";
-import { SingOut } from "./components/Auth/SingOut";
-
+import { Button } from "./components/UI/Button/Button";
+import './App.scss';
 function App() {
   const dispatch = useAppDispatch()
 useEffect(()=>{
@@ -22,9 +20,11 @@ useEffect(()=>{
 const user = useAppSelector((state)=> state.redusers.authReducer.user)
   return (
     <>
-    {user ? <p>{user}</p>: <p>Authentication</p>}
+    {user ? <p>{user}</p>: <p>No Authentication</p>}
 
     </>
+
+    
   );
 }
 
